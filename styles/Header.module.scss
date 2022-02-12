@@ -1,0 +1,22 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  @include flex;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.container {
+  @include flex;
+  width: min(90%, 80rem);
+  justify-content: space-between;
+}
+
+.icon {
+  position: relative;
+  z-index: 100;
+}

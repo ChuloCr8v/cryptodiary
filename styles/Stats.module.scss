@@ -1,0 +1,16 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats {
+  @include flex;
+  flex-direction: column;
+  padding: 3rem 0;
+}
+
+.container {
+  @include flex;
+  width: min(90%, 80rem);
+}
