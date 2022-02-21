@@ -18,23 +18,3 @@ export default function Home() {
     </div>
   );
 }
-
-// useEffect(() => {
-//   const options = {
-//     method: "GET",
-//     url: "https://coingecko.p.rapidapi.com/global",
-//     headers: {
-//       "x-rapidapi-host": "coingecko.p.rapidapi.com",
-//       "x-rapidapi-key": "eb6d684b20mshd3b4025d7c50329p141521jsn8cb44c488bff",
-//     },
-//   };
-
-//   axios
-//     .request(options)
-//     .then(function (response) {
-//       console.log(response.data.data.active_cryptocurrencies);
-//     })
-//     .catch(function (error) {
-//       console.error(error);
-//     });
-// }, []);
