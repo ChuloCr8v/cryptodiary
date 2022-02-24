@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
+import News from "../components/News";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -14,6 +15,7 @@ export default function Home() {
       <main className={styles.main}>
         <Hero />
         <Stats />
+        <News />
       </main>
     </div>
   );
