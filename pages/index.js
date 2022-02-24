@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import News from "../components/News";
+import Exchanges from "../components/Exchanges";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <Stats />
         <News />
+        <Exchanges />
       </main>
     </div>
   );

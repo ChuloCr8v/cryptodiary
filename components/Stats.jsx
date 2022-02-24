@@ -25,7 +25,7 @@ const Stats = () => {
           console.log("empty");
         }
         setGlobalData(response.data.Data);
-        console.log(response.data.Data);
+        //console.log(response.data.Data);
         //console.log(response.data.data.active_cryptocurrencies);
       })
       .catch(function (error) {
