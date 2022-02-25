@@ -40,7 +40,9 @@ const News = () => {
                 key={newsItem.id}
                 className={styles.news_card}
               >
-                <img src={newsItem.imageurl} alt={newsItem.title} />
+                <div className={styles.news_img}>
+                  <img src={newsItem.imageurl} alt={newsItem.title} />
+                </div>
                 <div className={styles.news_content}>
                   <h3 className={styles.news_title}>{newsItem.title}</h3>
                   <p className={styles.news_body}>
@@ -48,8 +50,7 @@ const News = () => {
                   </p>
                 </div>
               </a>
-            ))
-            .slice(0, 10)}
+            ))}
         </div>
       </div>
     </div>

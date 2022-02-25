@@ -17,10 +17,12 @@ const Exchanges = () => {
         const data = response.data.Data;
         //   console.log(data);
         console.log(data[i].Name);
-        for (let i = 0; i < data.length; i++) {
-          console.log(data[i].Name);
+       for (const entry of Object.entries(data)) {
+         // return entry[1]
+          result = (entry[1]);
+          setExchanges(entry[1]);
+          console.log(result )
         }
-        //setExchanges(data);
       })
       .catch((error) => {
         console.log(error);

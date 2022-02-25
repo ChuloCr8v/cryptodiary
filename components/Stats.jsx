@@ -1,7 +1,6 @@
 import styles from "../styles/Stats.module.scss";
 import Heading from "./Heading";
 import Image from "next/image";
-import { FaBitcoin } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import millify from "millify";

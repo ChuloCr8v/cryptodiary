@@ -6,8 +6,11 @@
 
 .stats {
   @include flex;
+  background: #fff ;
   flex-direction: column;
   padding: 5rem 0;
+  overflow: hidden;
+  box-shadow: 3px 3px 48px 2px rgb(0,0,0,0.2);
   p {
     color: black;
   }
