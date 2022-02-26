@@ -15,6 +15,9 @@ const GlobalData  = () => {
     }
     
     axios.request(options).then((response) => {
+      if(response === null) {
+        alert(444)
+      }
       setGlobalData(response.data)
     }).catch((error) => {
       console.log(error)

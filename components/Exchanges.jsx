@@ -19,14 +19,14 @@ const Exchanges = () => {
         console.log(data[i].Name);
        for (const entry of Object.entries(data)) {
          // return entry[1]
-          result = (entry[1]);
-          setExchanges(entry[1]);
-          console.log(result )
+          const result = [entry[1]];
+          setExchanges(result);
         }
       })
       .catch((error) => {
         console.log(error);
       });
+          console.log(exchanges )
   }, []);
 
   return (
