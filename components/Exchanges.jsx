@@ -16,12 +16,12 @@ const Exchanges = () => {
       .then((response) => {
         const data = response.data.Data;
         //   console.log(data);
-        console.log(data[i].Name);
-       for (const entry of Object.entries(data)) {
-         // return entry[1]
-          result = (entry[1]);
+        //console.log(data[i].Name);
+        for (const entry of Object.entries(data)) {
+          // return entry[1]
+          result = entry[1];
           setExchanges(entry[1]);
-          console.log(result )
+          console.log(exchanges);
         }
       })
       .catch((error) => {
