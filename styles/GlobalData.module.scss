@@ -29,25 +29,25 @@
 .stat {
   margin-top: 2rem;
   padding: 10px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(20px);
   padding: 10px;
   border-radius: 100px;
-  box-shadow: 3px 3px 8px 2px rgb(0,0,0,0.2);
+  box-shadow: 3px 3px 8px 2px rgb(0, 0, 0, 0.2);
   //  border: 2px gold solid;
   p {
     width: 100%;
     @include flex;
     justify-content: space-between;
     color: red;
-    font-weight: bold ;
+    font-weight: bold;
     span {
       padding: 10px 20px;
       border-radius: 100px;
       background: gold;
       color: black;
-      font-weight: bold ;
-      box-shadow:inset 3px 3px 8px 2px rgb(0,0,0,0.2);
+      font-weight: bold;
+      box-shadow: inset 3px 3px 8px 2px rgb(0, 0, 0, 0.2);
     }
   }
 }

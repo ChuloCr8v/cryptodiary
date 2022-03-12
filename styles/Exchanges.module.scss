@@ -1,3 +1,123 @@
-.exchanges {
-  padding: 2.5rem 0;
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exchanges,
+.exchanges_container {
+  @include flex;
+  flex-direction: column;
+}
+.exchanges_container {
+  padding-top: 5rem;
+}
+
+.container {
+  max-width: 90%;
+  padding-bottom: 9rem;
+  padding-top: 5rem;
+}
+
+.exchange_details {
+  @include flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(43, 43, 43);
+  padding: 10px;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+  }
+}
+
+.exchange_brand {
+  @include flex;
+}
+
+.exchange_name,
+.icon {
+  color: gold;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.description_container {
+  @include flex;
+  flex-direction: column;
+  background: #4b4a4a;
+  overflow: hidden;
+  margin-top: -10px;
+  overflow: hidden;
+  height: 0;
+  transition: all 0.3s;
+}
+
+#show_description {
+  height: 100%;
+  transition: all 0.3s;
+}
+
+.logo_container {
+  width: 100%;
+  @include flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: gold;
+  }
+}
+
+.description {
+  color: white;
+  font-size: 1.2em;
+  margin: 1rem;
+}
+
+.more_details {
+  margin: 1rem;
+  p {
+    color: white;
+    font-size: 1.1em;
+    margin-top: 0.5rem;
+  }
+  .icon {
+    color: goldenrod;
+    margin: 0;
+    font-size: 1.5em;
+    margin-top: 2rem;
+  }
+}
+.trade_vol_container {
+  margin-top: 1.5rem;
+  h3 {
+    font-size: 1.2em;
+    font-weight: 900;
+    margin-bottom: 0.3rem;
+    color: goldenrod;
+  }
+}
+
+.address_container {
+  @include flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link {
+  a {
+    color: gold;
+    transition: all 0.3s;
+    &:hover {
+      color: goldenrod;
+    }
+  }
 }
