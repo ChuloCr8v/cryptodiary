@@ -25,9 +25,9 @@ const Hero = () => {
         spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
-        autoplay={{ delay: 300500, disableOnInteraction: false }}
+        //onSwiper={(swiper) => console.log(swiper)}
+        //onSlideChange={() => console.log("slide change")}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
         effect="fade"
         className={styles.swipe}
       >

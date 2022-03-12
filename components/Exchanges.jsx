@@ -1,9 +1,12 @@
 import styles from "../styles/Exchanges.module.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Heading from "./Heading";
 
 const Exchanges = () => {
-  const [exchanges, setExchanges] = useState([]);
+  const [exchanges, setExchanges] = useState({});
+
+  const baseUrl = `https://cryptocompare.com`;
 
   useEffect(() => {
     const options = {
@@ -15,37 +18,36 @@ const Exchanges = () => {
       .request(options)
       .then((response) => {
         const data = response.data.Data;
-        //   console.log(data);
-<<<<<<< HEAD
-        //console.log(data[i].Name);
-        for (const entry of Object.entries(data)) {
-          // return entry[1]
-          result = entry[1];
-          setExchanges(entry[1]);
-          console.log(exchanges);
-=======
-        console.log(data[i].Name);
-       for (const entry of Object.entries(data)) {
-         // return entry[1]
-          const result = [entry[1]];
-          setExchanges(result);
->>>>>>> 0fd0f441e417f08f976066de71b0d1de47230717
-        }
+        setExchanges(data);
       })
       .catch((error) => {
         console.log(error);
       });
-          console.log(exchanges )
   }, []);
 
   return (
     <div className={styles.exchanges}>
-      <div className={styles.container}>
-        <div className={styles.exchanges_container}>
-          {exchanges.map((exchange) => (
-            <h1>{exchange.Name}</h1>
-          ))}
-        </div>
+      <div className={styles.container} style={{ color: "black" }}>
+        <Heading
+          heading={"Exchanges"}
+          subtitle={
+            "Cryptocurrency exchanges and all you need to know about them"
+          }
+        />
+        {exchanges &&
+          Object.values(exchanges)
+            .map((exchange) => (
+              <div className={styles.exchanges_container}>
+                <div className={styles.exchange}>
+                  <h3 className={styles.exchange_name}>{exchange.Name}</h3>
+                  <img
+                    src={`${baseUrl}${exchange.LogoUrl}`}
+                    alt={exchange.Name}
+                  />
+                </div>
+              </div>
+            ))
+            .slice(0, 20)}
       </div>
     </div>
   );
