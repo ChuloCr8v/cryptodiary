@@ -18,8 +18,8 @@ export default function Home() {
         <Hero />
         <GlobalData />
         <Stats />
-        <News />
        <Exchanges /> 
+        <News />
       </main>
     </div>
   );

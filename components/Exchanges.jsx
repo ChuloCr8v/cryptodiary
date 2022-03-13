@@ -7,7 +7,15 @@ import { FaMapMarker, FaGlobe, FaChevronCircleDown } from "react-icons/fa";
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
   const [showDesc, setShowDesc] = useState(false);
-
+  const [number, setNumber] = useState(10);
+  
+  const desc = (index) => { 
+    if (showDesc === index) { 
+     return setShowDesc(null)
+    } 
+  setShowDesc(index) 
+  }
+  
   const baseUrl = `https://cryptocompare.com`;
 
   useEffect(() => {
@@ -40,15 +48,9 @@ const Exchanges = () => {
           {exchanges &&
             Object.values(exchanges)
               .map((exchange, index) => (
-                <div className={styles.exchange} key={index}>
+                <div className={styles.exchange} key={index} onClick={() => desc(index)}>
                   <div
                     className={styles.exchange_details}
-                    onClick={(index) => {
-                      if (showDesc === index) {
-                        console.log("working");
-                      }
-                      setShowDesc(index);
-                    }}
                   >
                     <div className={styles.exchange_brand}>
                       <img
@@ -61,7 +63,7 @@ const Exchanges = () => {
                   </div>
                   <div
                     className={styles.description_container}
-                    id={showDesc && styles.show_description}
+                    id={showDesc === index && styles.show_description}
                   >
                     <div className={styles.logo_container}>
                       <img
@@ -91,7 +93,7 @@ const Exchanges = () => {
                           <FaGlobe className={styles.icon} />
                           <p>
                             Visit
-                            <a href={exchange.Url}> {exchange.Name} </a>
+                            <a href={`${baseUrl}${exchange.Url}`}> {exchange.Name} </a>
                             To Know More!
                           </p>
                         </div>
@@ -100,7 +102,19 @@ const Exchanges = () => {
                   </div>
                 </div>
               ))
-              .slice(0, 2)}
+              .slice(0, number)}
+
+        <div className={styles.btn_container}>
+          <button onClick={() => setNumber(number + 10)}>show more </button>
+          <button onClick={() => {
+            if(number === 10){
+              return
+            }
+            setNumber(number - 10)
+          }}>
+            show less
+          </button>
+        </div>
         </div>
       </div>
     </div>

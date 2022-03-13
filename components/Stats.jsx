@@ -23,7 +23,8 @@ const Stats = () => {
         if (!response) {
           console.log("empty");
         }
-        setGlobalData(response.data.Data);
+        setInterval(setGlobalData(response.data.Data), 1000)
+        
         //console.log(response.data.Data);
         //console.log(response.data.data.active_cryptocurrencies);
       })
@@ -50,6 +51,7 @@ const Stats = () => {
                 pathname: "/[id]",
                 query: {
                   id: data.CoinInfo.Id,
+                  
                 },
               }}
               key={data.CoinInfo.Id}

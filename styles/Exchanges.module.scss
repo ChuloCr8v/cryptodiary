@@ -26,6 +26,7 @@
   justify-content: space-between;
   background: rgb(43, 43, 43);
   padding: 10px;
+  border: 2px goldenrod solid;
   img {
     height: 50px;
     width: 50px;
@@ -33,6 +34,9 @@
   }
 }
 
+.exchange {
+  background: goldenrod;
+}
 .exchange_brand {
   @include flex;
 }
@@ -48,8 +52,6 @@
   @include flex;
   flex-direction: column;
   background: #4b4a4a;
-  overflow: hidden;
-  margin-top: -10px;
   overflow: hidden;
   height: 0;
   transition: all 0.3s;
@@ -78,7 +80,6 @@
 
 .description {
   color: white;
-  font-size: 1.2em;
   margin: 1rem;
 }
 
@@ -86,7 +87,6 @@
   margin: 1rem;
   p {
     color: white;
-    font-size: 1.1em;
     margin-top: 0.5rem;
   }
   .icon {
@@ -118,6 +118,25 @@
     transition: all 0.3s;
     &:hover {
       color: goldenrod;
+    }
+  }
+}
+
+.btn_container {
+  margin-top: 2rem;
+  button {
+    color: black;
+    background: goldenrod;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: none;
+    margin: 10px;
+    transition: all 0.3s;
+    text-transform: capitalize;
+    box-shadow: 3px 3px 8px 2px rgb(0,0,0,0.2);
+    &:hover {
+      background: gold;
+      box-shadow: 10px 15px 20px 2px rgb(0,0,0,0.3);
     }
   }
 }
