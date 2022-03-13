@@ -12,9 +12,6 @@ const Stats = () => {
     const options = {
       method: "GET",
       url: "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={38166a57a59b34576d1fe693d036865874b56413e766f798c444d7974e1786f8} ",
-      headers: {
-        // "Access-Control-Allow-Origin": true,
-      },
     };
 
     axios
@@ -23,10 +20,7 @@ const Stats = () => {
         if (!response) {
           console.log("empty");
         }
-        setInterval(setGlobalData(response.data.Data), 1000)
-        
-        //console.log(response.data.Data);
-        //console.log(response.data.data.active_cryptocurrencies);
+        setInterval(setGlobalData(response.data.Data), 1000);
       })
       .catch(function (error) {
         console.error(error);
@@ -51,7 +45,7 @@ const Stats = () => {
                 pathname: "/[id]",
                 query: {
                   id: data.CoinInfo.Id,
-                  
+                  price: data.RAW.USD.PRICE,
                 },
               }}
               key={data.CoinInfo.Id}

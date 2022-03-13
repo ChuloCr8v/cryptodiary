@@ -6,16 +6,16 @@ import { FaMapMarker, FaGlobe, FaChevronCircleDown } from "react-icons/fa";
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
-  const [showDesc, setShowDesc] = useState(false);
+  const [showDesc, setShowDesc] = useState("");
   const [number, setNumber] = useState(10);
-  
-  const desc = (index) => { 
-    if (showDesc === index) { 
-     return setShowDesc(null)
-    } 
-  setShowDesc(index) 
-  }
-  
+
+  const desc = (index) => {
+    if (showDesc === index) {
+      return setShowDesc(null);
+    }
+    setShowDesc(index);
+  };
+
   const baseUrl = `https://cryptocompare.com`;
 
   useEffect(() => {
@@ -48,10 +48,12 @@ const Exchanges = () => {
           {exchanges &&
             Object.values(exchanges)
               .map((exchange, index) => (
-                <div className={styles.exchange} key={index} onClick={() => desc(index)}>
-                  <div
-                    className={styles.exchange_details}
-                  >
+                <div
+                  className={styles.exchange}
+                  key={index}
+                  onClick={() => desc(index)}
+                >
+                  <div className={styles.exchange_details}>
                     <div className={styles.exchange_brand}>
                       <img
                         src={`${baseUrl}${exchange.LogoUrl}`}
@@ -93,7 +95,10 @@ const Exchanges = () => {
                           <FaGlobe className={styles.icon} />
                           <p>
                             Visit
-                            <a href={`${baseUrl}${exchange.Url}`}> {exchange.Name} </a>
+                            <a href={`${baseUrl}${exchange.Url}`}>
+                              {" "}
+                              {exchange.Name}{" "}
+                            </a>
                             To Know More!
                           </p>
                         </div>
@@ -104,17 +109,19 @@ const Exchanges = () => {
               ))
               .slice(0, number)}
 
-        <div className={styles.btn_container}>
-          <button onClick={() => setNumber(number + 10)}>show more </button>
-          <button onClick={() => {
-            if(number === 10){
-              return
-            }
-            setNumber(number - 10)
-          }}>
-            show less
-          </button>
-        </div>
+          <div className={styles.btn_container}>
+            <button onClick={() => setNumber(number + 10)}>show more </button>
+            <button
+              onClick={() => {
+                if (number === 10) {
+                  return;
+                }
+                setNumber(number - 10);
+              }}
+            >
+              show less
+            </button>
+          </div>
         </div>
       </div>
     </div>
