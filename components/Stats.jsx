@@ -29,6 +29,20 @@ const Stats = () => {
 
   const baseUrl = "https://cryptocompare.com";
 
+  useEffect(() => {
+    axios
+      .get(
+        "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=GBP&limit=10"
+      )
+      .then((response) => {
+        const data = response.Data.Data.time;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <section className={styles.stats}>
       <div className={styles.container}>

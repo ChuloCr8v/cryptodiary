@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-const LineChart = ({ chartPrice }) => {
+const LineChart = ({ chartPrice, time }) => {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -22,11 +22,11 @@ const LineChart = ({ chartPrice }) => {
   );
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: chartPrice,
     datasets: [
       {
         label: "Price (USD)",
-        data: chartPrice,
+        data: time,
         fill: "+2",
         backgroundColor: "green",
         borderColor: "gold",
@@ -37,8 +37,8 @@ const LineChart = ({ chartPrice }) => {
   };
 
   const options = {
-    scales: {
-      yAxis: [
+    scale: {
+      y: [
         {
           ticks: {
             beginAtZero: false,

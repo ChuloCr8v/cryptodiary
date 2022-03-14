@@ -65,7 +65,7 @@ const Exchanges = () => {
                   </div>
                   <div
                     className={styles.description_container}
-                    id={showDesc === index && styles.show_description}
+                    id={`${showDesc === index}` && styles.show_description}
                   >
                     <div className={styles.logo_container}>
                       <img
