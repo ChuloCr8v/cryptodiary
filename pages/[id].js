@@ -1,47 +1,80 @@
 import React from "react";
-import LineChart from "../components/LineChart";
-import { useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-const cryptocurrency = (props) => {
-  const chartPrice = [30, 40];
-  const tie = [222];
+//https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232
 
-  const fetch = async () => {
-    try {
-      const res = await axios.get(
-        "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=10"
-      );
+const cryptocurrency = () => {
+  const [price, setprice] = useState([]);
+  const [history, setHistory] = useState([]);
 
-      const data = res?.data?.Data?.Data;
-      const da = data.map((d) => {
-        const { time } = d;
-        return time;
-      });
-      const cp = data.map((d) => {
-        const { high } = d;
-        return high;
-      });
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
 
-      for (let i = 0; i < da.length; i++) {
-        console.log(da[i]);
-        tie.push(da[i]);
-      }
-      for (let i = 0; i < cp.length; i++) {
-        console.log(cp[i]);
-        chartPrice.push(cp[i]);
-      }
-      console.log(tie);
-    } catch (error) {
-      console.log(error);
-    }
+  const fetchData = async () => {
+    const { data } = await axios.get(
+      "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1"
+    );
+    console.log(data);
+    setHistory(data.prices);
   };
 
-  fetch();
+  useEffect(() => {
+    fetchData();
+    console.log(Date.parse(2022));
+  }, []);
 
   return (
     <div style={{ padding: 50 }}>
-      <LineChart chartPrice={chartPrice} time={tie} />
+      <Line
+        options={{
+          scale: {
+            y: [
+              {
+                ticks: {
+                  beginAtZero: false,
+                },
+              },
+            ],
+          },
+        }}
+        data={{
+          labels: history.map((t) => {
+            const data = new Date(t[0]).toLocaleDateString();
+            return data;
+            console.log(t[0]);
+          }),
+          datasets: [
+            {
+              label: "Price (USD)",
+              data: history.map((price) => price[1]),
+              fill: "+2",
+              backgroundColor: "green",
+              borderColor: "gold",
+              pointBorderColor: "green",
+              //  borderDash: [20, 5],
+            },
+          ],
+        }}
+      />
     </div>
   );
 };

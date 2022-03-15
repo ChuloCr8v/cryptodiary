@@ -1,4 +1,5 @@
-import {
+{
+  /*import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
@@ -9,8 +10,11 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { useEffect, useState } from "react";
 
 const LineChart = ({ chartPrice, time }) => {
+  const [tiime, setTiime] = useState("");
+
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -21,12 +25,20 @@ const LineChart = ({ chartPrice, time }) => {
     Legend
   );
 
+  const getTime = async () => {
+    const data = await time;
+    console.log(data);
+    setTiime(data);
+  };
+
+  getTime();
+
   const data = {
     labels: chartPrice,
     datasets: [
       {
         label: "Price (USD)",
-        data: time,
+        data: getTime,
         fill: "+2",
         backgroundColor: "green",
         borderColor: "gold",
@@ -48,11 +60,16 @@ const LineChart = ({ chartPrice, time }) => {
     },
   };
 
+  useEffect(() => {
+    console.log(tiime);
+  }, []);
+
   return (
-    <div>
-      <Line options={options} data={data} />
-    </div>
+    <div>{time !== null ? <Line options={options} data={data} /> : ""}</div>
   );
 };
 
 export default LineChart;
+
+*/
+}
