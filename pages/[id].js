@@ -54,7 +54,7 @@ const cryptocurrency = (props) => {
     {
       title: "Price to USD",
       value: `${props.price && props.price}`,
-      icon: <FaDollarSign />,
+      icon: <FaDollarSign className={styles.icon} />,
     },
     // {
     //   title: 'Rank',
@@ -64,51 +64,49 @@ const cryptocurrency = (props) => {
     {
       title: "24h Volume",
       value: `${props.dailyTradeVol && props.dailyTradeVol}`,
-      icon: <FaFunnelDollar />,
+      icon: <FaFunnelDollar className={styles.icon} />,
     },
     {
       title: "Market Cap",
       value: `${props.mktCap && props.mktCap}`,
-      icon: <FaChartPie />,
+      icon: <FaChartPie className={styles.icon} />,
     },
     // {
     //   title: 'All-time-high(daily avg.)',
     //   value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`,
     //   icon: <TrophyOutlined /> },
-  ];
-
-  const genericStats = [
-    {
+        {
       title: "Total Supply",
       value: `${props.supply}`,
-      icon: <FaExchangeAlt />,
+      icon: <FaExchangeAlt className={styles.icon} />,
     },
     {
       title: "Circulating Supply",
       value: `${props.circulatingSupply}`,
-      icon: <FaInfoCircle />,
+      icon: <FaInfoCircle className={styles.icon} />,
     },
     {
       title: "Circulating Supply Market Cap",
       value: `${props.circulatingSupplyMktCap}`,
-      icon: <FaInfoCircle />,
+      icon: <FaInfoCircle className={styles.icon}  />,
     },
   ];
 
   return (
+    <div className={styles.crypto_details}>
     <div className={styles.container}>
       <div className={styles.crypto_detail_hero}>
-        <div className={styles.crytpo_heading}>
-          <h1>
+        <div className={styles.crytpo_heading_container}>
+          <h1 className={styles.crypto_heading}>
             {props.name} ({props.slug}) Live Updates
           </h1>
-          <h4>
+          <h4 className={styles.crypto_subheading} >
             {props.name} price updates in USD, live statistics, market cap and
             supply.{" "}
           </h4>
         </div>
       </div>
-      <div>
+      <div className={styles.chart} >
         <Line
           options={{
             scale: {
@@ -139,40 +137,31 @@ const cryptocurrency = (props) => {
             ],
           }}
         />
+        <div className={styles.btn_container}>
+          <select>
+            <option>Minutes</option>
+            <option>Hour</option>
+            <option>Daily</option>
+          </select>
+        </div>
       </div>
-      <div className="statistics-container">
-        <div className="currency-stat">
+      <div className={styles.statistics_container}>
           <h2>{props.name} Live Update </h2>
-          <h4>An overview of {props.slug} live statistics </h4>
-          <div className="stat-list">
+          <div className={styles.stat_list}>
             {stats.map((stat) => (
-              <div className="stat-item">
-                <div className="stat-title">
-                  <p>{stat.icon}</p>
-                  <p>{stat.title}</p>
+              <div className={styles.stat_item}>
+                <div className={styles.stat_title}>
+                  <div className={styles.icon_container}>
+                    {stat.icon}
+                  </div>
+                  <p className={styles.title} >{stat.title}</p>
                 </div>
-                <p>{stat.value}</p>
+                <p className={styles.value} >{stat.value}</p>
               </div>
             ))}
           </div>
         </div>
-
-        <div className="all-currency-stat">
-          <h2>All Cryptocurrencies Live Update </h2>
-          <h4>An overview of all crypto live statistics </h4>
-          <div className="stat-list">
-            {genericStats.map((stat) => (
-              <div className="stat-item">
-                <div className="stat-title">
-                  <p>{stat.icon}</p>
-                  <p>{stat.title}</p>
-                </div>
-                <p>{stat.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    </div>
     </div>
   );
 };
