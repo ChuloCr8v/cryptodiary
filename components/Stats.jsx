@@ -60,6 +60,14 @@ const Stats = () => {
                 query: {
                   id: data.CoinInfo.Id,
                   price: data.RAW.USD.PRICE,
+                  name: data.CoinInfo.FullName,
+                  slug: data.CoinInfo.Name,
+                  dailyTradeVol: data.DISPLAY.USD.VOLUMEDAY,
+                  mktCap: data.DISPLAY.USD.MKTCAP,
+                  supply: data.DISPLAY.USD.SUPPLY,
+                  circulatingSupply: data.DISPLAY.USD.CIRCULATINGSUPPLY,
+                  circulatingSupplyMktCap:
+                    data.DISPLAY.USD.CIRCULATINGSUPPLYMKTCAP,
                 },
               }}
               key={data.CoinInfo.Id}
