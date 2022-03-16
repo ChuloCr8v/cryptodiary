@@ -26,7 +26,7 @@ const Hero = () => {
         <div className={styles.hero_stats}>
           {cryptoStats.map((coin, index) => (
             <div className={styles.coin} key={index} >
-              <div className={styles.coin_name}>
+              <div className={styles.coin_detail}>
                 <img
                    src={`${baseUrl}${coin.CoinInfo.ImageUrl}`}
                    height="100"

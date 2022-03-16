@@ -6,7 +6,6 @@
 
 .stats {
   @include flex;
-  background: #fff ;
   flex-direction: column;
   padding: 5rem 0;
   overflow: hidden;
@@ -19,7 +18,11 @@
 .container {
   @include flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(100px);
   width: min(90%, 80rem);
+  border-radius: 15px;
+  padding: 2rem 1rem;
 }
 
 .stats_container {
