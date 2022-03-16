@@ -27,16 +27,16 @@ const cryptocurrency = (props) => {
   const [loading, setLoading] = useState(true);
   const [price, setprice] = useState([]);
   const [history, setHistory] = useState([]);
-  const [timeInterval, setTimeInterval] = useState('');
+  const [timeInterval, setTimeInterval] = useState("");
   const [timePeriod, setTimePeriod] = useState(1);
 
   const changePeriod = (e) => {
-    setTimePeriod(e.target.value)
-  }
+    setTimePeriod(e.target.value);
+  };
   const changeInterval = (e) => {
-    setTimeInterval(e.target.value)
-  }
-  
+    setTimeInterval(e.target.value);
+  };
+
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -51,52 +51,55 @@ const cryptocurrency = (props) => {
     const { data } = await axios.get(
       `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${timePeriod}&interval=${timeInterval}`
     );
-  //  console.log(data);
-    setLoading(true)
+    setLoading(true);
     setHistory(data.prices);
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, [timeInterval, timePeriod]);
-  
+
   const intervalOptions = [
-      {
-        value: 'hourly', 
-        label: 'Hour',
-      }, 
-      {
-        value: 'daily', 
-        label: 'Daily',
-      }, 
-      {
-        value: 'monthly', 
-        label: 'Monthly',
-      }, 
-    ]
+    {
+      value: "minutely",
+      label: "Minutes",
+    },
+    {
+      value: "hourly",
+      label: "Hour",
+    },
+    {
+      value: "daily",
+      label: "Daily",
+    },
+    {
+      value: "monthly",
+      label: "Monthly",
+    },
+  ];
   const periodOptions = [
-      {
-        value: 1, 
-        label: 'Daily',
-      }, 
-      {
-        value: 3, 
-        label: '3d',
-      }, 
-      {
-        value: 7, 
-        label: '7d',
-      }, 
-      {
-        value: 30, 
-        label: '30d',
-      }, 
-      {
-        value: '365', 
-        label: '1y',
-      }, 
-    ]
+    {
+      value: 1,
+      label: "Daily",
+    },
+    {
+      value: 3,
+      label: "3d",
+    },
+    {
+      value: 7,
+      label: "7d",
+    },
+    {
+      value: 30,
+      label: "30d",
+    },
+    {
+      value: "365",
+      label: "1y",
+    },
+  ];
 
   const stats = [
     {
@@ -104,11 +107,6 @@ const cryptocurrency = (props) => {
       value: `${props.price && props.price}`,
       icon: <FaDollarSign className={styles.icon} />,
     },
-    // {
-    //   title: 'Rank',
-    //   value: props.rank,
-    //   icon: <NumberOutlined />
-    // },
     {
       title: "24h Volume",
       value: `${props.dailyTradeVol && props.dailyTradeVol}`,
@@ -119,10 +117,6 @@ const cryptocurrency = (props) => {
       value: `${props.mktCap && props.mktCap}`,
       icon: <FaChartPie className={styles.icon} />,
     },
-    // {
-    //   title: 'All-time-high(daily avg.)',
-    //   value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`,
-    //   icon: <TrophyOutlined /> },
     {
       title: "Total Supply",
       value: `${props.supply}`,
@@ -150,78 +144,84 @@ const cryptocurrency = (props) => {
           </div>
         </div>
         <div className={styles.chart}>
-         { loading ? 'loadinf' : <Line
-            options={{
-              scale: {
-                y: [
-                  {
-                    ticks: {
-                      beginAtZero: false,
+          {loading ? (
+            "loadinf"
+          ) : (
+            <Line
+              options={{
+                scale: {
+                  y: [
+                    {
+                      ticks: {
+                        beginAtZero: false,
+                      },
                     },
+                  ],
+                },
+              }}
+              data={{
+                labels: history.map((t) => {
+                  const data = new Date(t[0]).toLocaleDateString();
+                  return data;
+                }),
+                datasets: [
+                  {
+                    label: "Price (USD)",
+                    data: history.map((price) => price[1]),
+                    fill: "+2",
+                    backgroundColor: "green",
+                    borderColor: "gold",
+                    pointBorderColor: "green",
                   },
                 ],
-              },
-            }}
-            data={{
-              labels: history.map((t) => {
-                const data = new Date(t[0]).toLocaleDateString();
-                return data;
-                console.log(t[0]);
-              }),
-              datasets: [
-                {
-                  label: "Price (USD)",
-                  data: history.map((price) => price[1]),
-                  fill: "+2",
-                  backgroundColor: "green",
-                  borderColor: "gold",
-                  pointBorderColor: "green",
-                },
-              ],
-            }}
-          /> }
+              }}
+            />
+          )}
           <div className={styles.select_container}>
             <div className={styles.select}>
               <p className={styles.select_title}>Days: </p>
               <select onChange={changePeriod} value={timePeriod}>
-                {periodOptions.map((opt) => (
-                  <option value={opt.value} >{opt.label}</option>
-                ))} 
+                {periodOptions.map((opt, index) => (
+                  <option value={opt.value} key={index}>
+                    {opt.label}
+                  </option>
+                ))}
               </select>
             </div>
             <div className={styles.select}>
               <p className={styles.select_title}>Time: </p>
               <select onChange={changeInterval} value={timeInterval}>
-                {intervalOptions.map((opt) => (
-                  <option value={opt.value} >{opt.label}</option>
-                ))} 
+                {intervalOptions.map((opt, index) => (
+                  <option value={opt.value} key={index}>
+                    {opt.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
-        <div className={styles.statistics_container}>
-          <h2>{props.name} Live Update </h2>
-          <div className={styles.stat_list}>
-            {stats.map((stat) => (
-              <div className={styles.stat_item}>
-                <div className={styles.stat_title}>
-                  <div className={styles.icon_container}>{stat.icon}</div>
-                  <p className={styles.title}>{stat.title}</p>
+          <div className={styles.statistics_container}>
+            <h2>{props.name} Live Update </h2>
+            <div className={styles.stat_list}>
+              {stats.map((stat, index) => (
+                <div className={styles.stat_item} key={index}>
+                  <div className={styles.stat_title}>
+                    <div className={styles.icon_container}>{stat.icon}</div>
+                    <p className={styles.title}>{stat.title}</p>
+                  </div>
+                  <p className={styles.value}>{stat.value}</p>
                 </div>
-                <p className={styles.value}>{stat.value}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
 export default cryptocurrency;
 
 export async function getServerSideProps(context) {
-  console.log(context.query);
   return {
     props: {
       price: context.query.price,

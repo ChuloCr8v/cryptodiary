@@ -23,12 +23,17 @@
 }
 
 .hero_heading {
-  font-size : 3em;
+  font-size: 3em;
   text-align: left;
   font-weight: 900;
 }
 
 .hero_subheading {
-  font-size: 0.8em;
-  text-align: center;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.hero_stats {
+  @include flex;
+  flex-direction: column;
 }

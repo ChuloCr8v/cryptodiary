@@ -72,31 +72,33 @@ const Stats = () => {
               }}
               key={data.CoinInfo.Id}
             >
-              <div className={styles.stat_container}>
-                <div className={styles.crypto_details}>
-                  <div className={styles.name_container}>
-                    <p className={styles.coin_alias}>{data.CoinInfo.Name}</p>
-                    <h2>{data.CoinInfo.FullName}</h2>
+              <a>
+                <div className={styles.stat_container}>
+                  <div className={styles.crypto_details}>
+                    <div className={styles.name_container}>
+                      <p className={styles.coin_alias}>{data.CoinInfo.Name}</p>
+                      <h2>{data.CoinInfo.FullName}</h2>
+                    </div>
+                    <img
+                      src={`${baseUrl}${data.CoinInfo.ImageUrl}`}
+                      height="100"
+                      width="100"
+                      alt="logo"
+                      className={styles.icon}
+                    />
                   </div>
-                  <img
-                    src={`${baseUrl}${data.CoinInfo.ImageUrl}`}
-                    height="100"
-                    width="100"
-                    alt="logo"
-                    className={styles.icon}
-                  />
+                  <div className={styles.stat}>
+                    <p>
+                      <span>Price: </span>
+                      {data.DISPLAY.USD.PRICE.toLocaleString()}
+                    </p>
+                    <p>
+                      <span>Market Cap: </span>
+                      {data.DISPLAY.USD.MKTCAP.toLocaleString()}
+                    </p>
+                  </div>
                 </div>
-                <div className={styles.stat}>
-                  <p>
-                    <span>Price: </span>
-                    {data.DISPLAY.USD.PRICE.toLocaleString()}
-                  </p>
-                  <p>
-                    <span>Market Cap: </span>
-                    {data.DISPLAY.USD.MKTCAP.toLocaleString()}
-                  </p>
-                </div>
-              </div>
+              </a>
             </Link>
           ))}
         </div>
