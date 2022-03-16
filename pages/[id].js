@@ -103,7 +103,7 @@ const Cryptocurrency = (props) => {
 
   const stats = [
     {
-      title: "Price to USD",
+      title: "Price (USD)",
       value: `${props.price && props.price}`,
       icon: <FaDollarSign className={styles.icon} />,
     },
@@ -182,7 +182,11 @@ const Cryptocurrency = (props) => {
               <p className={styles.select_title}>Days: </p>
               <select onChange={changePeriod} value={timePeriod}>
                 {periodOptions.map((opt, index) => (
-                  <option value={opt.value} key={index}>
+                  <option
+                    className={styles.option}
+                    value={opt.value}
+                    key={index}
+                  >
                     {opt.label}
                   </option>
                 ))}
@@ -192,7 +196,11 @@ const Cryptocurrency = (props) => {
               <p className={styles.select_title}>Time: </p>
               <select onChange={changeInterval} value={timeInterval}>
                 {intervalOptions.map((opt, index) => (
-                  <option value={opt.value} key={index}>
+                  <option
+                    className={styles.option}
+                    value={opt.value}
+                    key={index}
+                  >
                     {opt.label}
                   </option>
                 ))}

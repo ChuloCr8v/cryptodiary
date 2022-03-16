@@ -6,36 +6,95 @@
 
 .nav,
 .show_menu {
+  width: calc(100% - 50px);
   @include flex;
-  background: #000;
-  height: 0;
-  width: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #0f0f0f;
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
+  min-height: calc(100vh + 20px);
   z-index: 20;
-  transform: translateX(150vw);
-  margin-top: 3rem;
+  padding-top: 5rem;
   transition: all 0.4s;
-  border-radius: 100%;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transform: translateX(-150vw);
+  -webkit-transform: translateX(-150vw);
+  -moz-transform: translateX(-150vw);
+  -ms-transform: translateX(-150vw);
+  -o-transform: translateX(-150vw);
 }
 
 .show_menu {
   transform: translateX(0);
-  height: 100vh;
+}
+
+.logo {
+  text-align: left;
+  color: gold;
+  text-transform: uppercase;
+  margin-left: -40px;
+  span {
+    color: white;
+    display: block;
+    margin-left: 60px;
+  }
+}
+
+.menu {
+  margin-top: 10rem;
   width: 100%;
-  border-radius: 0;
+  a {
+    position: relative;
+    padding: 15px 30px;
+    list-style: none;
+    font-size: 1.2rem;
+    color: white;
+    text-align: left;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+      &::after {
+        content: "";
+        font-size: 1rem;
+        background: gold;
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+      }
+    }
+  }
 }
 
 .menu_item {
+  position: relative;
+  padding: 15px 30px;
   list-style: none;
   font-size: 1.2rem;
   color: white;
-  margin-top: 0.5rem;
-  text-align: center;
+  text-align: left;
   transition: all 0.3s;
   cursor: pointer;
   &:hover {
-    color: gold;
+    background: rgba(255, 255, 255, 0.03);
+    &::after {
+      content: "";
+      font-size: 1rem;
+      background: gold;
+      height: 100%;
+      width: 3px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+    }
   }
 }
