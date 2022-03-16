@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Heading from "./Heading";
 import { FaMapMarker, FaGlobe, FaChevronCircleDown } from "react-icons/fa";
+import Loading from './Loading'
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
   const [showDesc, setShowDesc] = useState("");
   const [number, setNumber] = useState(10);
+   const [loading, setLoading] = useState(true)
 
   const desc = (index) => {
     if (showDesc === index) {
@@ -29,6 +31,7 @@ const Exchanges = () => {
       .then((response) => {
         const data = response.data.Data;
         setExchanges(data);
+        setLoading(false)
       })
       .catch((error) => {
         console.log(error);
@@ -36,7 +39,7 @@ const Exchanges = () => {
   }, []);
 
   return (
-    <div className={styles.exchanges}>
+    <section className={styles.exchanges}>
       <div className={styles.container} style={{ color: "black" }}>
         <Heading
           heading={"Exchanges"}
@@ -44,7 +47,7 @@ const Exchanges = () => {
             "Cryptocurrency exchanges and all you need to know about them"
           }
         />
-        <div className={styles.exchanges_container}>
+       {loading ? <Loading /> :  <div className={styles.exchanges_container}>
           {exchanges &&
             Object.values(exchanges)
               .map((exchange, index) => (
@@ -122,9 +125,9 @@ const Exchanges = () => {
               show less
             </button>
           </div>
-        </div>
+        </div>} 
       </div>
-    </div>
+    </section>
   );
 };
 
