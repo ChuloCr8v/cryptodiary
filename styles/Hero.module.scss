@@ -37,3 +37,30 @@
   @include flex;
   flex-direction: column;
 }
+
+.coin {
+   position: relative;
+  background: gold;
+  @include flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 3px 3px 15px 2px rgb(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: all 0.3s;
+  &:hover {
+    transform: translateY(-7px);
+    background: #f5f4f4;
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.coin_name {
+  font-size: 1.3rem;
+  color: white ;
+}

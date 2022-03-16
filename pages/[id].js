@@ -23,7 +23,7 @@ import styles from "../styles/CryptoDetail.module.scss";
 
 //https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232
 
-const cryptocurrency = (props) => {
+const Cryptocurrency = (props) => {
   const [loading, setLoading] = useState(true);
   const [price, setprice] = useState([]);
   const [history, setHistory] = useState([]);
@@ -219,7 +219,7 @@ const cryptocurrency = (props) => {
   );
 };
 
-export default cryptocurrency;
+export default Cryptocurrency;
 
 export async function getServerSideProps(context) {
   return {

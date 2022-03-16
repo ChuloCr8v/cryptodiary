@@ -72,8 +72,7 @@ const Stats = () => {
               }}
               key={data.CoinInfo.Id}
             >
-              <a>
-                <div className={styles.stat_container}>
+                <a className={styles.stat_container}>
                   <div className={styles.crypto_details}>
                     <div className={styles.name_container}>
                       <p className={styles.coin_alias}>{data.CoinInfo.Name}</p>
@@ -97,8 +96,7 @@ const Stats = () => {
                       {data.DISPLAY.USD.MKTCAP.toLocaleString()}
                     </p>
                   </div>
-                </div>
-              </a>
+                </a>
             </Link>
           ))}
         </div>

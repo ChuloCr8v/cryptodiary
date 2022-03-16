@@ -24,8 +24,8 @@ const Hero = () => {
            <p className={styles.hero_subheading}> Get the latest Cryptocurrency update from the right source. Take a look at coin prices, historical chart, market data,  list of exchanges and cryptocurrency news updates all in one place.</p>
         </div>
         <div className={styles.hero_stats}>
-          {cryptoStats.map((coin) => (
-            <div className={styles.coin}>
+          {cryptoStats.map((coin, index) => (
+            <div className={styles.coin} key={index} >
               <div className={styles.coin_name}>
                 <img
                    src={`${baseUrl}${coin.CoinInfo.ImageUrl}`}
