@@ -1,80 +1,46 @@
 import styles from "../styles/Hero.module.scss";
-
-// import Swiper core and required modules
-import { Pagination, A11y, Autoplay, EffectFade } from "swiper";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css/bundle";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-
-import slide1 from "../public/slide1.jpg";
-import slide2 from "../public/slide2.jpg";
-import slide3 from "../public/slide3.jpg";
-import slide from "../public/slide.jpg";
+import axios from 'axios'
+import {useEffect, useState}  from 'react'
 
 const Hero = () => {
+  
+  const [cryptoStats,setCryptoStats] = useState([])
+  const baseUrl = "https://cryptocompare.com";
+  
+  const fetchCryptos = async () => {
+    const res = await axios.get('https://min-api.cryptocompare.com/data/top/totalvolfull?limit=3&tsym=USD&api_key=38166a57a59b34576d1fe693d036865874b56413e766f798c444d7974e1786f8')
+    const data = res.data.Data
+    setCryptoStats(data)
+  }
+  
+  fetchCryptos()
+  
+  
   return (
     <section className={styles.hero}>
-      <Swiper
-        // install Swiper modules
-        modules={[Pagination, A11y, Autoplay, EffectFade]}
-        spaceBetween={0}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        //onSwiper={(swiper) => console.log(swiper)}
-        //onSlideChange={() => console.log("slide change")}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        effect="fade"
-        className={styles.swipe}
-      >
-        <SwiperSlide>
-          <div className={styles.slide1}>
-            <div className={styles.slide_content}>
-              <h2 className={styles.slide_title}>Welcome to crypto diary</h2>
-              <p className={styles.slide_subtitle}>
-                Get the latest Cryptocurrency update from the right source. Take
-                a look at the prices, market cap, history and details all in one
-                place.
-              </p>
-              <a href="#" className={styles.details_link}>
-                <span>Details</span>
-              </a>
+      <div className={styles.container}>
+        <div className={styles.hero_content}>
+           <h1 className={styles.hero_heading}> Welcome To Crypto Wallstreet </h1>
+           <p className={styles.hero_subheading}> Get the latest Cryptocurrency update from the right source. Take a look at coin prices, historical chart, market data,  list of exchanges and cryptocurrency news updates all in one place.</p>
+        </div>
+        <div className={styles.hero_stats}>
+          {cryptoStats.map((coin) => (
+            <div className={styles.coin}>
+              <div className={styles.coin_name}>
+                <img
+                   src={`${baseUrl}${coin.CoinInfo.ImageUrl}`}
+                   height="100"
+                   width="100"
+                   alt={coin.CoinInfo.Name}
+                   className={styles.icon}
+                    />
+                <h1 className={styles.coin_name}>{coin.CoinInfo.Name}</h1>
+              </div>
+              <p className={styles.coin_price}>{coin.DISPLAY.USD.PRICE} </p>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide2}>
-            <div className={styles.slide_content}>
-              <h2 className={styles.slide_title}>Top Stories on Crypto</h2>
-              <p className={styles.slide_subtitle}>
-                Get hourly news updates on all your favourites cryptocurrencies
-                as well as others that also matter.
-              </p>
-              <a href="#" className={styles.details_link}>
-                <span>Details</span>
-              </a>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide3}>
-            <div className={styles.slide_content}>
-              <h2 className={styles.slide_title}>Know Your Exchanges</h2>
-              <p className={styles.slide_subtitle}>
-                Get to know about the list of cryptocurency agencies currently
-                operating across the globe.
-              </p>
-              <a href="#" className={styles.details_link}>
-                <span>Details</span>
-              </a>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

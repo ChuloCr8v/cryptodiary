@@ -24,10 +24,19 @@ import styles from "../styles/CryptoDetail.module.scss";
 //https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232
 
 const cryptocurrency = (props) => {
+  const [loading, setLoading] = useState(true);
   const [price, setprice] = useState([]);
   const [history, setHistory] = useState([]);
-  const [timeInterval, setTimeInterval] = useState(1);
+  const [timeInterval, setTimeInterval] = useState('');
+  const [timePeriod, setTimePeriod] = useState(1);
 
+  const changePeriod = (e) => {
+    setTimePeriod(e.target.value)
+  }
+  const changeInterval = (e) => {
+    setTimeInterval(e.target.value)
+  }
+  
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -40,16 +49,54 @@ const cryptocurrency = (props) => {
 
   const fetchData = async () => {
     const { data } = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${timeInterval}&interval=minute`
+      `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${timePeriod}&interval=${timeInterval}`
     );
-    console.log(data);
+  //  console.log(data);
+    setLoading(true)
     setHistory(data.prices);
+    setLoading(false)
   };
 
   useEffect(() => {
     fetchData();
-    console.log(Date.parse(2022));
-  }, [timeInterval]);
+  }, [timeInterval, timePeriod]);
+  
+  const intervalOptions = [
+      {
+        value: 'hourly', 
+        label: 'Hour',
+      }, 
+      {
+        value: 'daily', 
+        label: 'Daily',
+      }, 
+      {
+        value: 'monthly', 
+        label: 'Monthly',
+      }, 
+    ]
+  const periodOptions = [
+      {
+        value: 1, 
+        label: 'Daily',
+      }, 
+      {
+        value: 3, 
+        label: '3d',
+      }, 
+      {
+        value: 7, 
+        label: '7d',
+      }, 
+      {
+        value: 30, 
+        label: '30d',
+      }, 
+      {
+        value: '365', 
+        label: '1y',
+      }, 
+    ]
 
   const stats = [
     {
@@ -103,7 +150,7 @@ const cryptocurrency = (props) => {
           </div>
         </div>
         <div className={styles.chart}>
-          <Line
+         { loading ? 'loadinf' : <Line
             options={{
               scale: {
                 y: [
@@ -132,11 +179,25 @@ const cryptocurrency = (props) => {
                 },
               ],
             }}
-          />
-          <div className={styles.btn_container}>
-            <button onClick={() => setTimeInterval(5)}>5 days</button>
+          /> }
+          <div className={styles.select_container}>
+            <div className={styles.select}>
+              <p className={styles.select_title}>Days: </p>
+              <select onChange={changePeriod} value={timePeriod}>
+                {periodOptions.map((opt) => (
+                  <option value={opt.value} >{opt.label}</option>
+                ))} 
+              </select>
+            </div>
+            <div className={styles.select}>
+              <p className={styles.select_title}>Time: </p>
+              <select onChange={changeInterval} value={timeInterval}>
+                {intervalOptions.map((opt) => (
+                  <option value={opt.value} >{opt.label}</option>
+                ))} 
+              </select>
+            </div>
           </div>
-        </div>
         <div className={styles.statistics_container}>
           <h2>{props.name} Live Update </h2>
           <div className={styles.stat_list}>
@@ -153,6 +214,7 @@ const cryptocurrency = (props) => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
