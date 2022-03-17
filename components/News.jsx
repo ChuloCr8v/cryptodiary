@@ -2,8 +2,12 @@ import styles from "../styles/News.module.scss";
 import Heading from "./Heading";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loading from './Loading'
+import parse from 'html-react-parser';
+
 const News = () => {
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -16,6 +20,8 @@ const News = () => {
       .then((response) => {
         const data = response.data.Data;
         setNews(data);
+        console.log(data)
+        setLoading(false)
         //   console.log(news)
       })
       .catch((error) => {
@@ -24,7 +30,7 @@ const News = () => {
   }, []);
 
   return (
-    <div className={styles.news}>
+    <section className={styles.news}>
       <div className={styles.container}>
         <Heading
           heading={"Top Cryptocurrency News Updates"}
@@ -32,7 +38,7 @@ const News = () => {
             "Be in the know of the latest happenings in the world of cryptocurrencies"
           }
         />
-        <div className={styles.news_container}>
+        {loading ? <Loading /> : <div className={styles.news_container}>
           {news
             .map((newsItem) => (
               <a
@@ -40,20 +46,22 @@ const News = () => {
                 key={newsItem.id}
                 className={styles.news_card}
               >
-                <div className={styles.news_img}>
-                  <img src={newsItem.imageurl} alt={newsItem.title} />
-                </div>
+                
                 <div className={styles.news_content}>
                   <h3 className={styles.news_title}>{newsItem.title}</h3>
                   <p className={styles.news_body}>
-                    {newsItem.body.slice(0, 200)}... <span>Read More...</span>
+                    {parse(newsItem.body.slice(0, 100))}... <span>Read More...</span>
                   </p>
+                </div>
+                <div className={styles.news_img}>
+                  <img src={newsItem.imageurl} alt={newsItem.title} />
+                  <p className={styles.source}>{newsItem.source}</p>
                 </div>
               </a>
             ))}
-        </div>
+        </div>} 
       </div>
-    </div>
+    </section>
   );
 };
 
