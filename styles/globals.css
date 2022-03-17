@@ -10,6 +10,25 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: gold;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
 a {
   color: inherit;
   text-decoration: none;

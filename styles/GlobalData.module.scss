@@ -17,9 +17,8 @@
   padding-top: 8rem;
 }
 
-.cards_container,
-.card {
-  width: 100%;
+.cards_container {
+  width: 200%;
 }
 
 .card {
@@ -33,13 +32,13 @@
   backdrop-filter: blur(20px);
   padding: 10px;
   border-radius: 100px;
-  box-shadow: 3px 3px 15px 2px rgb(255,255,255,0.31);
+  box-shadow: 3px 3px 15px 2px rgb(255, 255, 255, 0.31);
   //  border: 2px gold solid;
   p {
     width: 100%;
     @include flex;
     justify-content: space-between;
-    color: red;
+    color: white;
     font-weight: bold;
     span {
       padding: 10px 20px;
@@ -49,5 +48,15 @@
       font-weight: bold;
       box-shadow: inset 3px 3px 8px 2px rgb(0, 0, 0, 0.4);
     }
+  }
+}
+
+@media (min-width: 688px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 2rem;
+    padding: 1rem 2rem;
+    padding: 0;
   }
 }

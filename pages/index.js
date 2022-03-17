@@ -16,12 +16,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-       {/* <Hero /> */} 
+        <Hero />
         <GlobalData />
         <Stats />
 
-        <Exchanges /> 
-        <News /> 
+        <Exchanges />
+        <News />
       </main>
     </div>
   );

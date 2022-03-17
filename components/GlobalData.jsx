@@ -41,13 +41,13 @@ const GlobalData = () => {
               <div className={styles.stat}>
                 {/*  <FaCoin className={styles.icon} />*/}
                 <p>
-                  <span>Total Cryptocurrencies </span>
+                  <span>Cryptocurrencies </span>
                   {data.coins_count}
                 </p>
               </div>
               <div className={styles.stat}>
                 <p>
-                  <span>Total Market Cap: </span>USD{millify(data.total_mcap)}
+                  <span>Market Cap: </span>USD{millify(data.total_mcap)}
                 </p>
               </div>
               <div className={styles.stat}>
@@ -58,7 +58,7 @@ const GlobalData = () => {
               </div>
               <div className={styles.stat}>
                 <p>
-                  <span>Total Volume Traded:</span> USD
+                  <span>Volume Traded:</span> USD
                   {millify(data.total_volume)}
                 </p>
               </div>

@@ -12,13 +12,14 @@
 }
 
 .container {
-  max-width: 90%;
+  @include flex;
+  flex-direction: column;
+  width: min(90%, 80rem);
   padding-bottom: 9rem;
   padding-top: 5rem;
 }
 
 .hero_content {
-  max-width: 30rem;
   @include flex;
   flex-direction: column;
 }
@@ -38,6 +39,7 @@
 }
 
 .hero_stats {
+  width: 100%;
   @include flex;
   flex-direction: column;
   margin-top: 5rem;
@@ -51,7 +53,7 @@
   @include flex;
   // align-items: flex-start;
   justify-content: space-between;
-  width: 100%;
+  width: min(100%, 30rem);
   padding: 1rem;
   margin-top: 2rem;
   //box-shadow: 3px 3px 15px 2px rgb(255,255, 255, 0.2);
@@ -74,4 +76,17 @@
 .coin_price {
   font-size: 1.3em;
   color: gold;
+}
+
+@media (min-width: 992px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .coin {
+    width: 25rem;
+    margin-left: 2rem;
+  }
 }
