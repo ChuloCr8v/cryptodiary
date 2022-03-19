@@ -20,8 +20,11 @@
 }
 
 .hero_content {
+  width: 100%;
   @include flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
 }
 
 .hero_heading {
@@ -36,6 +39,7 @@
   color: gold;
   margin-top: 1.5rem;
   text-align: left;
+  height: 100%;
 }
 
 .hero_stats {
@@ -78,10 +82,25 @@
   color: gold;
 }
 
+@media (min-width: 668px) {
+  .hero_stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    place-items: center;
+  }
+}
+
 @media (min-width: 992px) {
   .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .hero_stats {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
