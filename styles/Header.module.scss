@@ -5,9 +5,23 @@
 }
 
 .header {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
   @include flex;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 1rem 0;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+#hide_header {
+  transform: translateY(-200vh);
 }
 
 .container {
@@ -17,6 +31,23 @@
 }
 
 .icon {
-  position: relative;
-  z-index: 100;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+#rotate {
+  border: 2px goldenrod solid ;
+  padding: 0.5px;
+  transform: rotateY(30deg) scale(1.5);
+  color: goldenrod;
+}
+
+@media (min-width: 688px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .icon {
+    display: none;
+  }
 }

@@ -16,7 +16,7 @@
   flex-direction: column;
   width: min(90%, 80rem);
   padding-bottom: 9rem;
-  padding-top: 5rem;
+  padding-top: 7rem;
 }
 
 .hero_content {
@@ -35,7 +35,7 @@
 }
 
 .hero_subheading {
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: gold;
   margin-top: 1.5rem;
   text-align: left;
@@ -46,7 +46,7 @@
   width: 100%;
   @include flex;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .coin {
@@ -96,6 +96,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding-top: 13rem;
   }
 
   .hero_stats {
