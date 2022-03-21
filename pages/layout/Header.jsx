@@ -2,6 +2,7 @@ import styles from "../../styles/Header.module.scss";
 import Menu from "../../components/Menu";
 import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
+import Logo from '../../public/logocrpto.png'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +30,9 @@ const Header = () => {
   return (
     <header className={styles.header} id={hideHeader && styles.hide_header} >
       <div className={styles.container}>
-        <div className={styles.logo}>Logo</div>
+        <div className={styles.logo}>
+          <img src={Logo.src} height="35px" alt="crypto Wallstreet logo" />
+        </div>
         <FaBars
           id = {showMenu && styles.rotate} 
           className={styles.icon}

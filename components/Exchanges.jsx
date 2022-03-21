@@ -9,7 +9,7 @@ const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
   const [showDesc, setShowDesc] = useState("");
   const [number, setNumber] = useState(10);
-   const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   const desc = (index) => {
     if (showDesc === index) {

@@ -1,11 +1,13 @@
 import Link from "next/link";
 import styles from "../styles/Menu.module.scss";
+import Logo from '../public/logocrpto.png'
+
 const Menu = ({ showMenu }) => {
   return (
     <nav className={showMenu ? styles.show_menu : styles.nav}>
-      <h1 className={styles.logo}>
-        Crypto<span>WallStreet</span>
-      </h1>
+      <div className={styles.logo}>
+        <img src={Logo.src} height="75px" alt="crypto Wallstreet logo" />
+      </div>
       <div className={styles.menu}>
         <Link href="/">
           <a className={styles.menu_item}>Home</a>

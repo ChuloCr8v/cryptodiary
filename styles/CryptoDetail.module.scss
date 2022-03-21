@@ -4,17 +4,14 @@
   align-items: center;
 }
 
-.crypto_details,
-.container,
-.crypto_detail_hero,
-.crypto_heading_container {
-  @include flex;
-  flex-direction: column;
+.crypto_details {
+@include flex;
+  padding-top: 5rem;
 }
 
 .container {
-  max-width: 90%;
-  padding: 2px;
+  width: min(90%, 80rem);
+  padding-top: 5rem;
 }
 
 .crypto_heading {
@@ -114,4 +111,12 @@
 
 .select_title {
   color: #fff;
+}
+
+@media (min-width: 688px) {
+  .stat_list {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+
+  }
 }

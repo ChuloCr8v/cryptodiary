@@ -131,7 +131,7 @@ const Cryptocurrency = (props) => {
 
   return (
     <div className={styles.crypto_details}>
-      <div className={styles.container}>
+      <div className={styles.container} style={{background: 'transparent'}}>
         <div className={styles.crypto_detail_hero}>
           <div className={styles.crytpo_heading_container}>
             <h1 className={styles.crypto_heading}>

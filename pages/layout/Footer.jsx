@@ -1,6 +1,7 @@
 import styles from "../../styles/Footer.module.scss";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { FaTwitter, FaFacebook } from "react-icons";
+import Logo from '../../public/logocrpto.png'
 import {useEffect} from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -16,11 +17,11 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.footer_content}>
           <div className={styles.logo_container}>
-           <div className={styles.logo}>
-             <h1  data-aos="fade-left"  className={styles.logo}> CryptoDaily </h1>
-           </div>
+            <div className={styles.logo}>
+              <img src={Logo.src} height="50px" alt="crypto Wallstreet logo" />
+            </div>
             <p data-aos="fade-up"  className={styles.description}>
-              CryptoDaily is the place to get your hands on some of the latest cryptocurrency trends, news and market data.
+              Crypto WallStreet is the place to get your hands on some of the latest cryptocurrency trends, news and market data.
             </p>
           </div>
           <div className={styles.footer_section} id={styles.col_2}>

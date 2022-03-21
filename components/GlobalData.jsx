@@ -41,7 +41,7 @@ const GlobalData = () => {
               <div className={styles.stat}>
                 {/*  <FaCoin className={styles.icon} />*/}
                 <p>
-                  <span>Cryptocurrencies </span>
+                  <span>Total Cryptocurrencies </span>
                   {data.coins_count}
                 </p>
               </div>

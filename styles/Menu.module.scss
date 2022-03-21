@@ -115,5 +115,11 @@
     color: goldenrod;
     padding: 0;
     margin: 1rem;
+    &:hover {
+      color: white;
+      &::after {
+        display: none ;
+      }
+    }
   }
 }
