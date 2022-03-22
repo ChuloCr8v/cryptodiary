@@ -12,11 +12,11 @@
   justify-content: flex-start;
   background: #0f0f0f;
   position: fixed;
-  left: 0;
+  left: -2px;
   top: 0;
   min-height: calc(100vh + 20px);
   z-index: 20;
-  padding-top: 5rem;
+  padding-top: 3rem;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -31,18 +31,6 @@
 
 .show_menu {
   transform: translateX(0);
-}
-
-.logo {
-  text-align: left;
-  color: gold;
-  text-transform: uppercase;
-  margin-left: -40px;
-  span {
-    color: white;
-    display: block;
-    margin-left: 60px;
-  }
 }
 
 .menu {

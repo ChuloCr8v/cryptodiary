@@ -3,7 +3,7 @@ import Menu from "../../components/Menu";
 import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import Logo from '../../public/logocrpto.png'
-
+import Link from 'next/link'
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [hideHeader, sethideHeader] = useState(false);
@@ -31,7 +31,11 @@ const Header = () => {
     <header className={styles.header} id={hideHeader && styles.hide_header} >
       <div className={styles.container}>
         <div className={styles.logo}>
-          <img src={Logo.src} height="35px" alt="crypto Wallstreet logo" />
+          <Link href="/">
+            <a>
+              <img src={Logo.src} height="35px" alt="crypto Wallstreet logo" />
+            </a>
+          </Link>
         </div>
         <FaBars
           id = {showMenu && styles.rotate} 
@@ -41,7 +45,7 @@ const Header = () => {
           }}
         />
       </div>
-      <Menu showMenu={showMenu} />
+      <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
     </header>
   );
 };

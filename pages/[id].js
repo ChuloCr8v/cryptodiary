@@ -20,6 +20,7 @@ import {
   Legend,
 } from "chart.js";
 import styles from "../styles/CryptoDetail.module.scss";
+import Loading from '../components/Loading'
 
 //https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232
 
@@ -49,7 +50,7 @@ const Cryptocurrency = (props) => {
 
   const fetchData = async () => {
     const { data } = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${timePeriod}&interval=${timeInterval}`
+      `https://api.coingecko.com/api/v3/coins/${props.id}/market_chart?vs_currency=usd&days=${timePeriod}&interval=${timeInterval}`
     );
     setLoading(true);
     setHistory(data.prices);
@@ -108,8 +109,8 @@ const Cryptocurrency = (props) => {
       icon: <FaDollarSign className={styles.icon} />,
     },
     {
-      title: "24h Volume",
-      value: `${props.dailyTradeVol && props.dailyTradeVol}`,
+      title: "All Time High",
+      value: `${props.ath && props.ath}`,
       icon: <FaFunnelDollar className={styles.icon} />,
     },
     {
@@ -119,7 +120,7 @@ const Cryptocurrency = (props) => {
     },
     {
       title: "Total Supply",
-      value: `${props.supply}`,
+      value: `${props.supply && props.supply}`,
       icon: <FaExchangeAlt className={styles.icon} />,
     },
     {
@@ -131,7 +132,7 @@ const Cryptocurrency = (props) => {
 
   return (
     <div className={styles.crypto_details}>
-      <div className={styles.container} style={{background: 'transparent'}}>
+      <div className={styles.container}>
         <div className={styles.crypto_detail_hero}>
           <div className={styles.crytpo_heading_container}>
             <h1 className={styles.crypto_heading}>
@@ -145,7 +146,7 @@ const Cryptocurrency = (props) => {
         </div>
         <div className={styles.chart}>
           {loading ? (
-            "loadinf"
+            <Loading />
           ) : (
             <Line
               options={{
@@ -167,7 +168,7 @@ const Cryptocurrency = (props) => {
                 datasets: [
                   {
                     label: "Price (USD)",
-                    data: history.map((price) => price[1]),
+                    data: history.map((price) => price),
                     fill: "+2",
                     backgroundColor: "green",
                     borderColor: "gold",
@@ -232,14 +233,14 @@ export default Cryptocurrency;
 export async function getServerSideProps(context) {
   return {
     props: {
+      id: context.query.id,
       price: context.query.price,
       name: context.query.name,
       slug: context.query.slug,
-      dailyTradeVol: context.query.dailyTradeVol,
+      ath: context.query.ath,
       mktCap: context.query.mktCap,
       supply: context.query.supply,
       circulatingSupply: context.query.circulatingSupply,
-      circulatingSupplyMktCap: context.query.circulatingSupplyMktCap,
     },
   };
 }

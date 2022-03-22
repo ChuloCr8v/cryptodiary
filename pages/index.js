@@ -21,7 +21,7 @@ export default function Home() {
         <Stats />
 
         <Exchanges />
-        <News />
+        <News id='news'/>
       </main>
     </div>
   );

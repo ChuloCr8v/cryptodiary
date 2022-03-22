@@ -90,6 +90,8 @@
 
 
 .btn_container {
+  width: 100%;
+  @include flex;
   margin-top: 2rem;
   button {
     color: black;

@@ -5,6 +5,7 @@ import Logo from '../../public/logocrpto.png'
 import {useEffect} from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import Link from 'next/link'
 
 const Footer = () => {
   
@@ -18,26 +19,27 @@ const Footer = () => {
         <div className={styles.footer_content}>
           <div className={styles.logo_container}>
             <div className={styles.logo}>
+              <Link href="/">
+            <a>
               <img src={Logo.src} height="50px" alt="crypto Wallstreet logo" />
-            </div>
+            </a>
+          </Link>
+        </div>
             <p data-aos="fade-up"  className={styles.description}>
               Crypto WallStreet is the place to get your hands on some of the latest cryptocurrency trends, news and market data.
             </p>
           </div>
           <div className={styles.footer_section} id={styles.col_2}>
             <h3 data-aos="fade-up"  className={styles.section_title}>Menu  </h3>
-            <a href="#" data-aos="fade-left"  className={styles.footer_menu_item}>
-              Home
-            </a>
-            <a href="#"  data-aos="fade-right" className={styles.footer_menu_item}>
-              Cryptocurrencies
-            </a>
-            <a href="#" data-aos="fade-up"  className={styles.footer_menu_item}>
-              Exchanges
-            </a>
-            <a href="#"  data-aos="fade-left" className={styles.footer_menu_item}>
-              Crypto News
-            </a>
+            <Link href="/">
+              <a className={styles.footer_menu_item}>Home</a>
+            </Link>
+            <Link href="/cryptocurrencies">
+              <a className={styles.footer_menu_item}>Cryptocurrencies</a>
+            </Link>
+            <Link href="/Exchanges">
+              <a className={styles.footer_menu_item}>Exchanges</a>
+            </Link>
           </div>
         
           <div className={styles.footer_section} id={styles.newsletter}>
