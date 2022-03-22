@@ -5,7 +5,7 @@ import axios from "axios";
 import millify from "millify";
 import Link from "next/link";
 import Loading from "../components/Loading";
-const cryptocurrencies = () => {
+const Cryptocurrencies = () => {
   const [globalData, setGlobalData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [number, setNumber] = useState(10);
@@ -108,4 +108,4 @@ const cryptocurrencies = () => {
   );
 };
 
-export default cryptocurrencies;
+export default Cryptocurrencies;

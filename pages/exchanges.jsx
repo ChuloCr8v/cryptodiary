@@ -5,7 +5,7 @@ import Heading from "../components/Heading";
 import { FaMapMarker, FaGlobe, FaChevronCircleDown } from "react-icons/fa";
 import Loading from '../components/Loading'
 
-const exchanges = () => {
+const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
   const [showDesc, setShowDesc] = useState("");
   const [number, setNumber] = useState(10);
@@ -131,4 +131,4 @@ const exchanges = () => {
   );
 };
 
-export default exchanges;
+export default Exchanges;
