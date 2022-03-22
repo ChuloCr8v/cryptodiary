@@ -36,17 +36,13 @@
 }
 
 #rotate {
-  border: 2px goldenrod solid ;
+  border: 2px goldenrod solid;
   padding: 0.5px;
   transform: rotateY(30deg) scale(1.5);
   color: goldenrod;
 }
 
 @media (min-width: 688px) {
-  .container {
-    padding: 0 1rem;
-  }
-
   .icon {
     display: none;
   }

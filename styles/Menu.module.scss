@@ -100,13 +100,14 @@
   }
 
   .menu_item {
-    color: goldenrod;
+    color: white;
     padding: 0;
     margin: 1rem;
+    font-weight: 500;
     &:hover {
-      color: white;
+      color: yellow;
       &::after {
-        display: none ;
+        display: none;
       }
     }
   }

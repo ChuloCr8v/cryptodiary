@@ -20,7 +20,8 @@ import {
   Legend,
 } from "chart.js";
 import styles from "../styles/CryptoDetail.module.scss";
-import Loading from '../components/Loading'
+import Loading from "../components/Loading";
+import millify from "millify";
 
 //https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232
 
@@ -105,27 +106,27 @@ const Cryptocurrency = (props) => {
   const stats = [
     {
       title: "Price (USD)",
-      value: `${props.price && props.price}`,
+      value: `USD ${props.price && props.price}`,
       icon: <FaDollarSign className={styles.icon} />,
     },
     {
       title: "All Time High",
-      value: `${props.ath && props.ath}`,
+      value: `USD ${props.ath && props.ath}`,
       icon: <FaFunnelDollar className={styles.icon} />,
     },
     {
       title: "Market Cap",
-      value: `${props.mktCap && props.mktCap}`,
+      value: `USD ${props.mktCap && millify(props.mktCap)}`,
       icon: <FaChartPie className={styles.icon} />,
     },
     {
       title: "Total Supply",
-      value: `${props.supply && props.supply}`,
+      value: `USD ${props.supply && millify(props.supply)}`,
       icon: <FaExchangeAlt className={styles.icon} />,
     },
     {
       title: "Circulating Supply",
-      value: `${props.circulatingSupply}`,
+      value: `USD ${millify(props.circulatingSupply)}`,
       icon: <FaInfoCircle className={styles.icon} />,
     },
   ];

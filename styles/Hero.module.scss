@@ -112,5 +112,15 @@
   .coin {
     width: 25rem;
     margin-left: 2rem;
+    margin-top: -20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .coin {
+    width: 33rem;
+    margin-left: 2rem;
+    margin-top: -20px;
+    padding: 1rem 2rem;
   }
 }

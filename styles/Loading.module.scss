@@ -12,17 +12,17 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background: rgba(0,0,0);
+  background: rgba(0, 0, 0);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
+  z-index: 10000;
 }
 
 .container {
   @include flex;
   flex-direction: column;
   padding: 40px 20px;
-  margin-top: -15rem;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 10px rgba(31, 38, 135, 0.7);
   backdrop-filter: blur(6.5px);
@@ -40,9 +40,9 @@
 
 .icon {
   transformt: scale(0.5);
-  color: gold ;
+  color: gold;
   animation: rotate 1s infinite alternate;
-  margin-bottom:0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .loading_msg {

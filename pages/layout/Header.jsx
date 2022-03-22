@@ -2,33 +2,33 @@ import styles from "../../styles/Header.module.scss";
 import Menu from "../../components/Menu";
 import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import Logo from '../../public/logocrpto.png'
-import Link from 'next/link'
+import Logo from "../../public/logocrpto.png";
+import Link from "next/link";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [hideHeader, sethideHeader] = useState(false);
-  const [scrollY, setScrollY] = useState('window.pageYOffset' );
-  
-    let prevPos = scrollY
-    const header = () => {
-      let currentPos = window.pageYOffset 
-      if(currentPos > prevPos) {
-        sethideHeader(true)
-      } else {
-        sethideHeader(false)
-      }
-        prevPos = currentPos
+  const [scrollY, setScrollY] = useState("window.pageYOffset");
+
+  let prevPos = scrollY;
+  const header = () => {
+    let currentPos = window.pageYOffset;
+    if (currentPos > prevPos) {
+      sethideHeader(true);
+    } else {
+      sethideHeader(false);
     }
- 
- useEffect(()=> {
-   window.addEventListener('scroll', header);
-   return () => {
-    window.removeEventListener('scroll', header)
-   } 
- }, [])
-  
+    prevPos = currentPos;
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", header);
+    return () => {
+      window.removeEventListener("scroll", header);
+    };
+  }, []);
+
   return (
-    <header className={styles.header} id={hideHeader && styles.hide_header} >
+    <header className={styles.header} id={hideHeader && styles.hide_header}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
@@ -38,14 +38,14 @@ const Header = () => {
           </Link>
         </div>
         <FaBars
-          id = {showMenu && styles.rotate} 
+          id={showMenu && styles.rotate}
           className={styles.icon}
           onClick={() => {
             setShowMenu(!showMenu);
           }}
         />
+        <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
       </div>
-      <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
     </header>
   );
 };
