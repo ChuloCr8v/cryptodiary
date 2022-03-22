@@ -6,6 +6,8 @@ import axios from "axios";
 import millify from "millify";
 import Link from "next/link";
 import Loading from "../components/Loading";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Cryptocurrencies = () => {
   const [globalData, setGlobalData] = useState([]);
@@ -60,7 +62,7 @@ const Cryptocurrencies = () => {
                 }}
                 key={data.id}
               >
-                <a className={styles.stat_container}>
+                <a className={styles.stat_container} data-aos="fade-up">
                   <div className={styles.crypto_details}>
                     <div className={styles.name_container}>
                       <p className={styles.coin_alias}>{data.symbol}</p>
@@ -90,7 +92,7 @@ const Cryptocurrencies = () => {
           </div>
         </div>
       )}
-      <div className={styles.btn_container}>
+      <div className={styles.btn_container} data-aos="fade-up">
         <button onClick={() => setNumber(number + 10)}>show more </button>
         <button
           onClick={() => {

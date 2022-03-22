@@ -2,6 +2,8 @@ import styles from "../styles/Hero.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Hero = () => {
   const [cryptoStats, setCryptoStats] = useState([]);
@@ -30,11 +32,11 @@ const Hero = () => {
       ) : (
         <div className={styles.container}>
           <div className={styles.hero_content}>
-            <h1 className={styles.hero_heading}>
+            <h1 className={styles.hero_heading}  data-aos="fade-up" data-aos-delay="1300">
               {" "}
               Welcome To Crypto Wallstreet{" "}
             </h1>
-            <p className={styles.hero_subheading}>
+            <p data-aos="fade-right" data-aos-delay="1500" className={styles.hero_subheading}>
               {" "}
               Get the latest Cryptocurrency update from the right source. Take a
               look at coin prices, historical chart, market data, list of
@@ -43,7 +45,7 @@ const Hero = () => {
           </div>
           <div className={styles.hero_stats}>
             {cryptoStats.map((coin, index) => (
-              <div className={styles.coin} key={index}>
+              <div className={styles.coin} key={index}  data-aos="fade-up" data-aos-delay="1000">
                 <div className={styles.coin_detail}>
                   <img
                     src={`${baseUrl}${coin.CoinInfo.ImageUrl}`}

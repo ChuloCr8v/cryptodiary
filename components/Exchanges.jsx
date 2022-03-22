@@ -4,6 +4,8 @@ import axios from "axios";
 import Heading from "./Heading";
 import { FaMapMarker, FaGlobe, FaChevronCircleDown } from "react-icons/fa";
 import Loading from './Loading'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState({});
@@ -55,7 +57,7 @@ const Exchanges = () => {
                   className={styles.exchange}
                   key={index}
                   onClick={() => desc(index)}
-                >
+                 data-aos="fade-up">
                   <div className={styles.exchange_details}>
                     <div className={styles.exchange_brand}>
                       <img
@@ -112,7 +114,7 @@ const Exchanges = () => {
               ))
               .slice(0, number)}
 
-          <div className={styles.btn_container}>
+          <div className={styles.btn_container} data-aos="fade-up">
             <button onClick={() => setNumber(number + 10)}>show more </button>
             <button
               onClick={() => {

@@ -4,6 +4,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
 import parse from "html-react-parser";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -46,6 +48,7 @@ const News = () => {
                 href={newsItem.url}
                 key={newsItem.id}
                 className={styles.news_card}
+                 data-aos="fade-up"
               >
                 <div className={styles.news_content}>
                   <h3 className={styles.news_title}>{newsItem.title}</h3>
